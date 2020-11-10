@@ -1,2 +1,2 @@
-# go-btc-trade
+# gotrading
  
