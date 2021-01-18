@@ -3,6 +3,8 @@ package cmd
 import (
 	"os"
 
+	"gocli/models"
+
 	"github.com/spf13/cobra"
 )
 
@@ -22,10 +24,6 @@ func Execute() {
 	RootCmd.Execute()
 }
 
-var (
-	lines = []string{"output test\n", "1234567890\n"}
-)
-
 // writeBytes write bytes to target file
 func writeBytes(filename string) error {
 	file, err := os.Create(filename)
@@ -34,7 +32,7 @@ func writeBytes(filename string) error {
 	}
 	defer file.Close()
 
-	for _, line := range lines {
+	for _, line := range models.Golang {
 		b := []byte(line)
 		_, err := file.Write(b)
 		if err != nil {
