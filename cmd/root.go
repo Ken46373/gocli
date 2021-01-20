@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"errors"
-	"fmt"
 	"os"
 
 	"gocli/models"
@@ -40,9 +39,9 @@ func writeBytes(filename string, args []string) error {
 		return err
 	}
 	defer file.Close()
-	fmt.Println(len(args))
 
-	for _, line := range models.Golang {
+	var model = findModel(args)
+	for _, line := range model {
 		b := []byte(line)
 		_, err := file.Write(b)
 		if err != nil {
@@ -50,4 +49,11 @@ func writeBytes(filename string, args []string) error {
 		}
 	}
 	return nil
+}
+
+// findModel find language file
+func findModel(args []string) []string {
+
+	// todo
+	return models.Golang
 }
